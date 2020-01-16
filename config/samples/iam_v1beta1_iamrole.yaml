@@ -1,0 +1,39 @@
+apiVersion: iam.amazonaws.com/v1beta1
+kind: IAMRole
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: sample-role
+spec:
+  description: "Role description"
+  trustRelationship: |
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Principal": {
+                    "Service": "ec2.amazonaws.com"
+                },
+                "Action": "sts:AssumeRole"
+            }
+        ]
+    }
+  inlinePolicy: 
+  - name: sample-inline
+    value: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": "ec2:Describe*",
+            "Resource": "*"
+          }
+        ]
+      }
+  policies:
+  - arn:aws:iam::123456789:policy/SomePolicy
+  - AnotherPolicy
+  path: "/"
+  maxSessionDuration: 3600

@@ -1,0 +1,16 @@
+replicaCount: 1
+
+image:
+  repository: gokulpch/aws-iam-crd-manager
+  tag: latest
+  pullPolicy: Always
+# pullSecret: some-secret  
+
+rbac:
+  create: true
+
+service:
+  port: 443
+
+# If using kube2iam or kiam
+#iamRole: 

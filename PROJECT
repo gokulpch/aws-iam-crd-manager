@@ -1,0 +1,3 @@
+version: "1"
+domain: amazonaws.com
+repo: github.com/gokulpch/aws-iam-crd-manager
